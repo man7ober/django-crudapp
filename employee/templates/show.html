@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Employee Records</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: monospace;
+        font-size: x-large;
+        text-align: center;
+        max-width: fit-content;
+        margin-inline: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>DJANGO CRUD</h1>
+    </div>
+
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th>Employee ID</th>
+          <th>Employee Name</th>
+          <th>Employee Email</th>
+          <th>Employee Contact</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for employee in employees %}
+        <tr>
+          <td>{{ employee.eid }}</td>
+          <td>{{ employee.ename }}</td>
+          <td>{{ employee.eemail }}</td>
+          <td>{{ employee.econtact }}</td>
+          <td>
+            <a
+              class="btn btn-outline-warning btn-sm"
+              href="/edit/{{ employee.id }}"
+              >Edit</a
+            >
+            |
+            <a
+              class="btn btn-outline-danger btn-sm"
+              href="/delete/{{ employee.id }}"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="/emp" class="btn btn-outline-primary">Add New Record</a>
+  </body>
+</html>

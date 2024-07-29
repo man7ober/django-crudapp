@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: monospace;
+        font-size: x-large;
+        max-width: fit-content;
+        margin-inline: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+      }
+
+      h2 {
+        font-size: larger;
+        text-align: center;
+        color: #06d6a0;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="POST" action="/emp">
+      {% csrf_token %}
+      <h2>Enter Details</h2>
+
+      <div class="form-group">
+        <label>Employee Id:</label>
+        <div type="number" required>{{ form.eid }}</div>
+      </div>
+
+      <div class="form-group">
+        <label>Employee Name:</label>
+        <div type="text" required>{{ form.ename }}</div>
+      </div>
+
+      <div class="form-group">
+        <label>Employee Email:</label>
+        <div type="email" required>{{ form.eemail }}</div>
+      </div>
+
+      <div class="form-group">
+        <label>Employee Contact:</label>
+        <div type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+          {{ form.econtact }}
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>
